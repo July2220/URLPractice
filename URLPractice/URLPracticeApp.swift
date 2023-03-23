@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct URLPracticeApp: App {
+    @StateObject private var networkManager = NetworkManager()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(networkManager)
         }
     }
 }
