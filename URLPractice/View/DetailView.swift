@@ -16,11 +16,28 @@ struct DetailView: View {
             VStack(alignment: .leading) {
                 Text(beer.name)
                     .font(.title)
+                Divider()
+                Text("First Brewed:\(beer.firstBrewed)")
+                    .font(.title3)
                 Text(beer.tagline)
                     .font(.title3)
-                Text("First Brewed:\(beer.firstBrewed)")
+                Divider()
                 Text("Description")
+                    .font(.title2)
+                Text(beer.description)
                     .font(.title3)
+            }
+            .padding()
+            Spacer()
+            VStack {
+                AsyncImage(url: URL(string:beer.imageURL)) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                } placeholder: {
+                    ProgressView()
+                }
+                .frame(width: 300, height: 200)
             }
         }
     }
